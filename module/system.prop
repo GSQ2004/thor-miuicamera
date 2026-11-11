@@ -1,0 +1,5 @@
+# Same minimum MIUI properties as the current cupid-development camera port.
+ro.miui.notch=1
+ro.miui.ui.version.code=816
+ro.miui.ui.version.name=V816
+

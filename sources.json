@@ -1,0 +1,58 @@
+{
+  "device": "thor",
+  "stock_version": "OS3.0.6.0.VLACNXM",
+  "stock_repository": null,
+  "stock_commit": null,
+  "native_sha256": {
+    "libcamera_algoup_jni.xiaomi.so": "d879481f764343e0e4b58f3631637774b95c3c6fc00a254bc6e26c783359a7aa",
+    "libcamera_mianode_jni.xiaomi.so": "b08f787c8fa65c73cf6a3b432145228ec832798051a45a8b4f5ca2e530ad9aa7",
+    "libmicampostproc_client.so": "7a69c56153821d2a31e9d5d29a49fbb8a36d4915281ec1509f959cb753f10aab",
+    "vendor.xiaomi.hardware.campostproc@1.0.so": "924566bd34a6021a5e02d96877e9bcb1282a6413ce9619b4b5d535437ba66538"
+  },
+  "dex_sha256": {
+    "classes.dex": "4edb3e3c90d65f627be204d546df5e8f740dbd922e1c658fbb85e49b2af24f1c",
+    "classes2.dex": "42b0012e69ebb767953591d0040cfdd44042181f2249e6f88aedae7734a849b9",
+    "classes3.dex": "ee5c2eebb321805341c794e73242c277a9c831faf0cd4863c0b955c784f7e856",
+    "classes4.dex": "ce7ca1057ff879fd81ce3c5359a6b46e7f79294bbd2be094429dc831f15d9077",
+    "classes5.dex": "9c4e00bf8d7d4343b55b744cc0d4846963912bbc72ddbd943fdae39f8d593f67",
+    "classes6.dex": "5646aaacc798bdae3bc84722fdc34d2b5049feb7df29f881755d2aa1c202e568"
+  },
+  "reference_repository": "https://github.com/cupid-development/android_device_xiaomi_miuicamera-cupid",
+  "reference_commit": "f3ed20d16a65cc3dcd1fac0c06b224190f3ba150",
+  "target_lineage": "24.0",
+  "target_android": 17,
+  "target_sdk": 37,
+  "latest_build_checked": "lineage-24.0-20261107-nightly-thor-signed.zip",
+  "local_stock_package": "thor_images_OS3.0.6.0.VLACNXM_15.0",
+  "input_apk_sha256": "dfb0c5feb4944503c35afe79b791a73773756e706782ac82d24018e7ee80004a",
+  "device_features_sha256": "aefa76ab2305aae2927eef75c26b69dfef7b0f812125c3118cddb99a1efc5c56",
+  "leica_overlay_sha256": "41f0fc509b44adfcaa5612e9b4f68cc1b0109c83bfa0b71ea80ce3656c4605e4",
+  "vendor_camera_hal_sha256": "26ad8ccef40638c48cd595f1bc3ed835d0b5e754d8d173ef8b374c566396ba07",
+  "mis_plugin_vidhance_sha256": "ecaaa236be8608a53b3939fbe4dc8a9569774bd7c308ffc4439531ef3aa8a454",
+  "leica_logo_sha256": "5edc10c74a9acbf97c18e7de2d9d332fd0d2ffb0936eea32baf20b7c653815b4",
+  "leica_logo_source": "https://leica-camera.com/themes/custom/leica_redesign_theme/logo.svg",
+  "target_android_versions": [
+    16,
+    17
+  ],
+  "compatibility_profiles": {
+    "android16-crdroid1210": {
+      "api": 36,
+      "rom": "crDroidAndroid-16.0-20260530-thor-v12.10",
+      "rom_zip_sha256": "a6e386d84ad58050c91530f199ae22ed8b789010097414334a317633586ca0e2",
+      "kernel_camera_sha256": "93818c52e0f15f123a339157ee82d30586403056a0bb0532d2b7fe7ab32fe6f9",
+      "input_hal_sha256": "4ffa7ed9ddc1a5e48b4ec91d2b4f6ad3233d02d80c1edfb6b4c71d98ae919256",
+      "patched_hal_sha256": "900dfb00f26dfce1a83e65b6a7839e4a0baa7f841c8d9f36aafdc2d795750b46",
+      "libgui_sha256": "c230c5ea6b9e5868a1d36d928ccd21cf20e206391af1dc71e96e10fbe4514c3e",
+      "app_domain": "platform_app"
+    },
+    "android17-lineage24": {
+      "api": 37,
+      "rom": "24.0-20261107-NIGHTLY-thor",
+      "kernel_camera_sha256": "6ce5312377c01802a1e271a2e9b499783dfb751e590618ed1609f2f422f55a2f",
+      "input_hal_sha256": "26ad8ccef40638c48cd595f1bc3ed835d0b5e754d8d173ef8b374c566396ba07",
+      "patched_hal_sha256": "240610b0bcb05d0d8d39d799fa1fc27dde8dbf1ede38fb87baa9f834ae5dbebc",
+      "app_domain": "platform_app_36"
+    }
+  }
+}

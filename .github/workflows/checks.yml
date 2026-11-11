@@ -1,0 +1,30 @@
+name: Source checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python syntax
+        run: python -m compileall -q scripts
+      - name: Shell syntax and compatibility profiles
+        run: |
+          for file in module/*.sh scripts/*.sh; do sh -n "$file"; done
+          sh scripts/check_compatibility_profiles.sh module/compatibility.sh
+      - name: Parse source manifest and XML
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          json.loads(Path('sources.json').read_text(encoding='utf-8'))
+          for path in Path('module').rglob('*.xml'):
+              ET.parse(path)
+          PY

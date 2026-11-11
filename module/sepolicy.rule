@@ -1,0 +1,20 @@
+# Expanded application-side rules from cupid-development lineage-24.0.
+# Enforcing stays enabled. No wildcard source/target/classes/permissions.
+typeattribute platform_app_36 vendor_hal_camerapostproc_xiaomi_client
+typeattribute platform_app_36 vendor_hal_qspmhal_client
+allow platform_app_36 hwservicemanager binder { call transfer }
+allow hwservicemanager platform_app_36 binder { call transfer }
+allow platform_app_36 hal_camera_default binder { call transfer }
+allow hal_camera_default platform_app_36 binder { call transfer }
+allow platform_app_36 vendor_hal_camerapostproc_xiaomi binder { call transfer }
+allow vendor_hal_camerapostproc_xiaomi platform_app_36 binder transfer
+allow platform_app_36 vendor_hal_camerapostproc_xiaomi_hwservice hwservice_manager find
+allow platform_app_36 adsprpcd_file dir { getattr open read search }
+allow platform_app_36 vendor_qdsp_device chr_file { ioctl read }
+allow platform_app_36 vendor_camera_data_file dir { append map getattr open read search ioctl lock write }
+allow platform_app_36 vendor_camera_data_file file { getattr open read }
+allow platform_app_36 app_data_file file execute
+allow platform_app_36 vendor_camera_sensor_prop file { getattr open read map }
+allow platform_app_36 vendor_display_prop file { getattr open read map }
+allow platform_app_36 vendor_panel_info_prop file { getattr open read map }
+
