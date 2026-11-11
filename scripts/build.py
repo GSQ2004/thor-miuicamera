@@ -19,6 +19,7 @@ from patch_smali import patch as patch_smali
 from patch_icon import build_icon, patch_resource_names, ICON_FILES
 from patch_vendor_camera import patch as patch_vendor_camera, copy_mis_plugin
 from patch_zoom_map import build_bridge
+from patch_manifest_version import patch_version_code
 
 
 def run(*arguments):
@@ -122,7 +123,9 @@ def build(args):
             if is_signature(entry.filename):
                 continue
             data = replacements[entry.filename].read_bytes() if entry.filename in replacements else original.read(entry)
-            if entry.filename == 'resources.arsc':
+            if entry.filename == 'AndroidManifest.xml':
+                data = patch_version_code(data, source['input_apk_version_code'], source['output_apk_version_code'])
+            elif entry.filename == 'resources.arsc':
                 data = patch_resource_names(data)
             elif entry.filename in ICON_FILES:
                 entry.filename = entry.filename.replace('.png', '.xml')
@@ -186,7 +189,7 @@ def build(args):
         if path.is_file():
             checksum_lines.append(f'{digest(path)}  {path.relative_to(module).as_posix()}')
     (module/'SHA256SUMS').write_text('\n'.join(checksum_lines)+'\n', encoding='utf-8', newline='\n')
-    output = ROOT/'dist'/f'thor-miuicamera-android16-17-0.1.6-EXPERIMENTAL-{stamp}.zip'
+    output = ROOT/'dist'/f'thor-miuicamera-android16-17-0.1.7-EXPERIMENTAL-{stamp}.zip'
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix('.zip.tmp')
     with zipfile.ZipFile(temporary, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as archive:

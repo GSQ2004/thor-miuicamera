@@ -39,6 +39,8 @@ inputs/
 
 最后一个 HAL 来自 `crDroidAndroid-16.0-20260530-thor-v12.10.zip`，其余二进制来自上述原厂包。
 桌面图标直接使用仓库中的原创 `assets/camera-icon.xml`，不需要下载品牌标志。
+0.1.7 使用内嵌白色背景与透明前景矢量的 adaptive-icon，不依赖新增的应用资源 ID。
+构建同时仅修改二进制 Manifest 中 versionCode 的整数值；其余 Manifest 保留。
 文件哈希必须匹配 `sources.json`。不要混入不完整 APK、旧 MIUI 版本或其他设备的库。
 `module/system/product/etc/device_features/thor.xml` 是同一原厂包的设备配置。
 

@@ -55,7 +55,10 @@
   },
   "launcher_icon": {
     "source": "assets/camera-icon.xml",
-    "sha256": "d4ad64826a84da5c2ac131cdd767004e25dacb0b70484ff46deb84d1d3bd8e15",
-    "design": "Original unbranded camera geometry, navy background and teal lens"
-  }
+    "sha256": "3f64e811aced58722ac0c4dc9d782a4c9b7ac720a3bd0f0616f8c90193f1655c",
+    "design": "User-approved white background, blue camera outline and teal lens; adaptive layers",
+    "approved_proposal": "white-camera-v4"
+  },
+  "input_apk_version_code": 610006100,
+  "output_apk_version_code": 610006107
 }

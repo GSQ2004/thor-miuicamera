@@ -1,4 +1,4 @@
-"""Compile the project's original, unbranded camera vector as the launcher icon."""
+"""Compile the project's user-approved white adaptive camera launcher icon."""
 from pathlib import Path
 import hashlib
 import json
@@ -14,8 +14,9 @@ def build_icon(root: Path, sdk: Path, work: Path) -> bytes:
     identity = json.loads((root/'sources.json').read_text(encoding='utf-8'))
     if hashlib.sha256(source.read_bytes()).hexdigest() != identity['launcher_icon']['sha256']:
         raise ValueError('Unexpected project camera icon input')
-    if ET.parse(source).getroot().tag != 'vector':
-        raise ValueError('Expected an Android vector drawable')
+    icon = ET.parse(source).getroot()
+    if icon.tag != 'adaptive-icon' or {c.tag for c in icon} != {'background', 'foreground'}:
+        raise ValueError('Expected an adaptive icon with background and foreground')
     stage = work/'camera-icon'
     (stage/'res/drawable').mkdir(parents=True, exist_ok=True)
     (stage/'res/drawable/camera_icon.xml').write_bytes(source.read_bytes())
