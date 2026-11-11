@@ -29,8 +29,6 @@
   "leica_overlay_sha256": "41f0fc509b44adfcaa5612e9b4f68cc1b0109c83bfa0b71ea80ce3656c4605e4",
   "vendor_camera_hal_sha256": "26ad8ccef40638c48cd595f1bc3ed835d0b5e754d8d173ef8b374c566396ba07",
   "mis_plugin_vidhance_sha256": "ecaaa236be8608a53b3939fbe4dc8a9569774bd7c308ffc4439531ef3aa8a454",
-  "leica_logo_sha256": "5edc10c74a9acbf97c18e7de2d9d332fd0d2ffb0936eea32baf20b7c653815b4",
-  "leica_logo_source": "https://leica-camera.com/themes/custom/leica_redesign_theme/logo.svg",
   "target_android_versions": [
     16,
     17
@@ -54,5 +52,10 @@
       "patched_hal_sha256": "240610b0bcb05d0d8d39d799fa1fc27dde8dbf1ede38fb87baa9f834ae5dbebc",
       "app_domain": "platform_app_36"
     }
+  },
+  "launcher_icon": {
+    "source": "assets/camera-icon.xml",
+    "sha256": "d4ad64826a84da5c2ac131cdd767004e25dacb0b70484ff46deb84d1d3bd8e15",
+    "design": "Original unbranded camera geometry, navy background and teal lens"
   }
 }

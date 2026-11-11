@@ -1,7 +1,7 @@
 id=thor_miuicamera_los24
 name=Thor MIUI Camera for Android 16/17 (EXPERIMENTAL)
-version=0.1.5-dev
-versionCode=6
+version=0.1.6-dev
+versionCode=7
 author=Local thor port; upstream fixes by cupid-development
 description=Experimental thor port with separate crDroid Android 16 and LineageOS Android 17 driver/HAL profiles, video stabilization and zoom-map compatibility. Not all modes or image quality validated.
 

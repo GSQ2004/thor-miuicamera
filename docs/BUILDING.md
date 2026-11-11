@@ -33,13 +33,12 @@ inputs/
   vendor.xiaomi.hardware.campostproc@1.0.so
   camera.qcom.so
   libmis_plugin_vidhance.so
-  leica-logo-official.svg
   crdroid-16-20260530/
     camera.qcom.so
 ```
 
 最后一个 HAL 来自 `crDroidAndroid-16.0-20260530-thor-v12.10.zip`，其余二进制来自上述原厂包。
-`leica-logo-official.svg` 来自 [Leica 官方标志](https://leica-camera.com/themes/custom/leica_redesign_theme/logo.svg)。
+桌面图标直接使用仓库中的原创 `assets/camera-icon.xml`，不需要下载品牌标志。
 文件哈希必须匹配 `sources.json`。不要混入不完整 APK、旧 MIUI 版本或其他设备的库。
 `module/system/product/etc/device_features/thor.xml` 是同一原厂包的设备配置。
 

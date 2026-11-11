@@ -23,6 +23,7 @@ Android 16 HAL 来自用户提供的 crDroid ROM，保留其版本原有内容�
 
 `module/system/product/etc/device_features/thor.xml` 为原厂设备配置。
 原厂二进制没有纳入 Git；Release 成品包含运行所必需的应用、原生库和资源。
-Leica 标志来自 Leica 官方 SVG，其著作权与商标权仍归原权利人所有。
+0.1.6 起桌面图标使用本项目原创的几何相机矢量图，源文件为 `assets/camera-icon.xml`，不含品牌文字或标志。
+相机应用内原有的品牌资源仍归各自权利人所有；桌面图标更新没有移除这些应用内资源。
 
 本项目不代表 Xiaomi、Leica、LineageOS 或 crDroid 官方。

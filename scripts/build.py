@@ -139,6 +139,7 @@ def build(args):
     module = work / 'module'
     shutil.copytree(ROOT/'module', module)
     shutil.copy2(ROOT/'README.md', module/'README.md')
+    shutil.copytree(ROOT/'assets', module/'assets')
     destination = module / 'system/priv-app/MiuiCamera/MiuiCamera.apk'
     destination.parent.mkdir(parents=True)
     run(sdk_tools/'apksigner.bat', 'sign', '--ks', key, '--ks-key-alias', 'thor-camera',
@@ -172,7 +173,7 @@ def build(args):
               'modified_smali': modified, 'native': native_report,
               'vendor_camera': vendor_camera_report,
               'vendor_camera_android16': vendor_camera_android16,
-              'icon_source': 'https://leica-camera.com/themes/custom/leica_redesign_theme/logo.svg',
+              'icon_source': source['launcher_icon'],
               'validation': ['APK CRC and exact stock DEX identities', 'smali assembled',
                              'APK signature verified', '16 KiB native alignment checked'],
               'not_validated': ['Android installation and app launch', 'SELinux runtime policy',
@@ -185,7 +186,7 @@ def build(args):
         if path.is_file():
             checksum_lines.append(f'{digest(path)}  {path.relative_to(module).as_posix()}')
     (module/'SHA256SUMS').write_text('\n'.join(checksum_lines)+'\n', encoding='utf-8', newline='\n')
-    output = ROOT/'dist'/f'thor-miuicamera-android16-17-0.1.5-EXPERIMENTAL-{stamp}.zip'
+    output = ROOT/'dist'/f'thor-miuicamera-android16-17-0.1.6-EXPERIMENTAL-{stamp}.zip'
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix('.zip.tmp')
     with zipfile.ZipFile(temporary, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as archive:

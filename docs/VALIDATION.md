@@ -1,4 +1,18 @@
-# 0.1.5 验证记录
+# 验证记录
+
+## 0.1.6：原创桌面图标
+
+日期：2026-11-11。仅更新桌面图标及相应版本、说明和构建元数据。
+
+- 文件：`thor-miuicamera-android16-17-0.1.6-EXPERIMENTAL.zip`，132281694 字节。
+- ZIP SHA-256：`9d962c888835229f6e68b8965e6bc8410b600411a5fed3a0a6034c55b39ae238`。
+- 原创矢量源：`assets/camera-icon.xml`，SHA-256 为 `d4ad64826a84da5c2ac131cdd767004e25dacb0b70484ff46deb84d1d3bd8e15`。
+- 与 0.1.5 对比，排除签名后 APK 文件集合不变，只有 `res/HAL.xml`、`res/O9k.xml`、`res/fB5.xml` 内容变化。
+- 所有 DEX、Manifest、资源表、其他 APK 内容、原生库和驱动补丁均保持不变。
+- 同一开发证书签名验证、16 KiB ZIP 对齐、成品 CRC 与校验清单通过。
+- 新图标矢量已渲染检查；本轮未重新安装到实机，不能将下述 0.1.5 实测写成 0.1.6 实测。
+
+## 0.1.5 验证记录
 
 日期：2026-11-11。成品文件为 `thor-miuicamera-android16-17-0.1.5-EXPERIMENTAL.zip`。
 

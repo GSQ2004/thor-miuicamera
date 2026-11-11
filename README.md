@@ -1,7 +1,9 @@
 # Thor MIUI Camera
 
+<img src="assets/camera-icon.svg" alt="Thor Camera 原创相机图标" width="96" />
+
 为小米 12S Ultra（`thor`）适配的 MIUI 相机模块，支持已核对的 Android 16 / 17 驱动组合。
-保留徕卡风格、红色 Leica 桌面图标、录像防抖和高倍率辅助取景小窗。
+保留徕卡风格、录像防抖和高倍率辅助取景小窗，桌面使用本项目原创的相机图标。
 
 > [!NOTE]
 > **作者碎碎念：**开发这个项目的契机是我手上有一部12SU的备用机，想刷类原生却苦于类原生的刷机包自带的相机都有问题（比如录像卡死）。于是用Codex把相机移植了。由于本人并不懂编程，所以该项目的代码全部由Codex编写+一部分反编译。目标嘛~~能用就行。手搓移植的大手子请不要拷打我(ToT)
@@ -12,7 +14,7 @@
 
 **开发测试版：仅适用于下表中的驱动与系统库组合。安装器按哈希选择配置，不只检查 Android 版本。**
 
-[下载 0.1.5](https://github.com/GSQ2004/thor-miuicamera/releases/tag/v0.1.5) ·
+[下载 0.1.6](https://github.com/GSQ2004/thor-miuicamera/releases/tag/v0.1.6) ·
 [兼容配置与哈希](sources.json) · [构建说明](docs/BUILDING.md) · [验证记录](docs/VALIDATION.md)
 
 ## 兼容范围
@@ -24,6 +26,7 @@
 
 Android 16 实测环境为 KernelSU-Next + Magic Mount-RS，SELinux 保持 Enforcing。
 拍照保存、普通录像、防抖录像、视频播放及声音、高倍率取景小窗已由实机用户确认正常。
+0.1.6 仅替换桌面图标，功能代码和 HAL 与已测试的 0.1.5 相同；新版安装后的显示效果尚未重新实机确认。
 尚未穷尽全部镜头、拍摄模式、分辨率、帧率和画质。其他 ROM 需要另行核对相机驱动、HAL 和系统库。
 
 ## 安装
@@ -71,7 +74,7 @@ adb reboot
 原厂 APK、原生库、ROM 镜像、构建工具、签名私钥和个人调试数据不纳入 Git。
 构建所需原厂材料及 SHA-256 见 [构建说明](docs/BUILDING.md) 和 [sources.json](sources.json)。
 
-Release 是经测试的成品，包含必要的原厂应用及依赖；这些组件和 Leica 标志的权利仍归各自权利人。
+Release 包含必要的原厂应用及依赖；这些组件和相机内置品牌资源的权利仍归各自权利人。
 本项目与 Xiaomi、Leica、LineageOS、crDroid 无官方关联。代码来源与许可范围见 [NOTICE.md](NOTICE.md)。
 
 ## 参考
