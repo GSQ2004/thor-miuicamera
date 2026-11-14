@@ -1,9 +1,8 @@
-# Thor MIUI Camera
+# Thor MIUI Camera · ROM 集成分支
 
 <img src="assets/camera-icon.svg" alt="Thor Camera 原创相机图标" width="96" />
 
-为小米 12S Ultra（`thor`）适配的 MIUI 相机模块，支持已核对的 Android 16 / 17 驱动组合。
-保留徕卡风格、录像防抖和高倍率辅助取景小窗，桌面使用本项目原创的相机图标。
+**`INTEGRATION` 专供 ROM 维护者将相机内置到刷机包。** 普通用户的 Magisk / KernelSU 模块请使用 [main 分支](https://github.com/GSQ2004/thor-miuicamera/tree/main)。
 
 > [!NOTE]
 > **作者碎碎念：**开发这个项目的契机是我手上有一部12SU的备用机，想刷类原生却苦于类原生的刷机包自带的相机都有问题（比如录像卡死）。于是用Codex把相机移植了。由于本人并不懂编程，所以该项目的代码全部由Codex编写+一部分反编译。目标嘛~~能用就行。手搓移植的大手子请不要拷打我(ToT)
@@ -12,88 +11,21 @@
 >
 > 总之，欢迎下载试用。如果遇到问题欢迎提交issue
 
-**开发测试版：仅适用于下表中的驱动与系统库组合。安装器按哈希选择配置，不只检查 Android 版本。**
+[下载 ROM 集成包](https://github.com/GSQ2004/thor-miuicamera/releases/tag/rom-integration-20261114) · [完整集成说明](docs/ROM-INTEGRATION.md) · [原厂输入与构建](docs/BUILDING.md)
 
-[下载 0.1.7](https://github.com/GSQ2004/thor-miuicamera/releases/tag/v0.1.7) ·
-[兼容配置与哈希](sources.json) · [构建说明](docs/BUILDING.md) · [验证记录](docs/VALIDATION.md)
+## 获取集成分支
 
-> [!IMPORTANT]
-> **从旧版升级的缓存限制：**本机更新后需要手动刷新相机解析缓存和启动器相机图标缓存，安装包尚未自动处理。直接重启可能仍显示旧图标。请勿为刷新图标清空整个桌面数据，详见[实测记录](docs/VALIDATION.md)。
-
-## ROM 内置集成版（实验性预发布）
-
-[下载 ROM 集成包](https://github.com/GSQ2004/thor-miuicamera/releases/tag/rom-integration-20261114) · [集成说明](docs/ROM-INTEGRATION.md)
-
-供 `thor / arm64` 刷机包维护者使用：提供 `Android.bp`、`product.mk` 和 SELinux 配置，无 ROM 名称/SDK 白名单，无须 Root 或元模块。默认保留目标 ROM 的 HAL，已知 HAL 补丁须明确选择。
-**已通过导出完整性与自动化测试；尚未完成目标 ROM 编译、刷机或实拍验证。** 解除集成检查不会自动修复私有 ABI 或 campostproc `createSession` 故障。此包用于放进 ROM 源码，不能作为 Root 模块直接刷入。
-
-## 兼容范围
-
-| Android | 已核对 ROM | 状态 |
-| --- | --- | --- |
-| 16 / API 36 | `crDroidAndroid-16.0-20260530-thor-v12.10` | 0.1.7 已安装、重启及实拍验证 |
-| 17 / API 37 | `24.0-20261107-NIGHTLY-thor` | 保留 0.1.4 已验证的配置，0.1.5 本轮未刷回重测 |
-
-Android 16 实测环境为 KernelSU-Next + Magic Mount-RS，SELinux 保持 Enforcing。
-拍照保存、普通录像、防抖录像、视频播放及声音、高倍率取景小窗已由实机用户确认正常。
-0.1.7 使用已审核的白底、蓝色相机线框和青绿色镜头自适应图标，已在当前 crDroid Android 16 实机确认。
-此前 0.1.6 的实拍功能已确认正常，但用户不认可桌面的白底叠深色方块效果，因此重新设计。
-新版本相机功能代码和 HAL 保持不变；用户已确认图标、拍照保存、视频播放及声音、防抖和高倍率小窗正常。
-升级限制：本机从旧版本更新时需人工刷新相机包解析缓存和启动器相机图标缓存；安装包未自动处理，直接重启可能继续显示旧图标。
-尚未穷尽全部镜头、拍摄模式、分辨率、帧率和画质。其他 ROM 需要另行核对相机驱动、HAL 和系统库。
-
-## 安装
-
-1. 确认设备为 `thor`，系统原有相机正常，并已安装 root 管理器。
-2. 从 Release 下载完整模块 ZIP。**不要把 GitHub 的 Source code ZIP 当作模块安装。**
-3. 在管理器中安装模块。KernelSU 系列需要可用的系统挂载元模块；本项目实测使用 Magic Mount-RS。
-4. 重启，打开相机，按需授予相机、麦克风和照片/视频权限。相机应用本身不需要 root。
-5. 测试照片保存、录像、声音、不同镜头和防抖。
-
-模块 ID 沿用 `thor_miuicamera_los24`，便于旧版本升级。
-若有其他占用 `com.android.camera` 的安装，安装器会中止，不会自动卸载它。
-升级 ROM、切换 Android 大版本或更换相机驱动前先禁用模块，再在新系统上重新安装，重新匹配配置。
-
-## 已完成的修复
-
-- 补齐新版 `CaptureResultExtras` 接口，适配首次权限流程和图库跳转。
-- 修补应用端 JNI 的 libgui ABI 差异，并补入兼容 shim。
-- 为 Android 16 / 17 分别选用已核对的 HAL，修正三个 ISPv3 电源控制命令，恢复录像切换。
-- 补齐 Vidhance MIS 插件，恢复超级防抖和 PRO。
-- 用 PRIVATE ImageReader / ImageWriter 桥接保留原尺寸辅助流，恢复长焦取景小窗和定位白框。
-- 按系统版本生成相机 seapp 映射及相应规则，SELinux 保持强制模式。
-
-模块挂载 APK、应用库、HAL 和配置；不刷写内核或整个 vendor 分区。
-SELinux 规则使用 ROM 中已有的应用域，会作用于同域应用，并非独立新建的相机域。
-
-## 排查与卸载
-
-- 如果图标存在但应用立即退出，检查 root 管理器是否对相机开启了“卸载模块 / 隐藏模块挂载”。相机进程需要能读取自己的 APK 和依赖。
-- 如果启动器显示通用图标，检查启动器是否能读取模块 APK；不必给启动器或相机授予 root。
-- 管理器的模块“操作 / Action”按钮将日志写入 `/data/adb/modules/thor_miuicamera_los24/diagnostics/`。
-- 也可运行 `scripts/collect-device.ps1` 收集 ADB 日志。提交问题前检查日志中的设备及应用信息，不必上传照片或视频。
-- 正常退出：在管理器禁用或卸载模块后重启。
-
-已有可用的 ADB 和 shell root 时，可单独禁用本模块：
-
-```text
-adb shell su -c "touch /data/adb/modules/thor_miuicamera_los24/disable"
-adb reboot
+```sh
+git clone --branch INTEGRATION --single-branch https://github.com/GSQ2004/thor-miuicamera.git
+cd thor-miuicamera
 ```
 
-## 源码与材料
+集成包包含 `Android.bp`、`product.mk`、SELinux 配置、权限 XML、相机 APK 和配套库。将解压后的目录放到 `vendor/xiaomi/thor-miuicamera`，按完整说明接入产品配置与 BoardConfig。
+本分支不限定目标 ROM 名称、Android SDK 数值或目标驱动哈希，不依赖 Root 管理器和元模块。默认保留目标 ROM 的 HAL，已有 HAL 补丁必须由维护者明确选择。
+仓库中的 `module/` 等目录是构建和导出的来源；ROM 集成入口为 `scripts/export_rom.py`，不会执行 Root 模块安装脚本。
 
-仓库提供构建脚本、补丁逻辑、Java 缓冲桥接、原生 shim 和模块模板。
-原厂 APK、原生库、ROM 镜像、构建工具、签名私钥和个人调试数据不纳入 Git。
-构建所需原厂材料及 SHA-256 见 [构建说明](docs/BUILDING.md) 和 [sources.json](sources.json)。
+## 验证状态
 
-Release 包含必要的原厂应用及依赖；这些组件和相机内置品牌资源的权利仍归各自权利人。
-本项目与 Xiaomi、Leica、LineageOS、crDroid 无官方关联。代码来源与许可范围见 [NOTICE.md](NOTICE.md)。
-
-## 参考
-
-- [LineageOS thor Wiki](https://wiki.lineageos.org/devices/thor/)
-- [LineageOS thor 设备树](https://github.com/LineageOS/android_device_xiaomi_thor)
-- [cupid-development 相机移植与补丁](https://github.com/cupid-development/android_device_xiaomi_miuicamera-cupid)
-- [Magisk 模块指南](https://topjohnwu.github.io/Magisk/guides.html)
-- [KernelSU 模块指南](https://kernelsu.org/guide/module.html)
+**实验性预发布：导出完整性与自动化检查已通过，目标 ROM 编译、刷机和实拍尚未验证。** 适用硬件仍为 `thor / arm64`。解除集成门槛不会自动修复私有 ABI 或 campostproc `createSession` 问题。
+ROM 集成 ZIP 用于 ROM 源码，不能作为 Root 模块或 Recovery 刷机包直接刷入。
+输入材料和原厂组件的权利范围见 [NOTICE.md](NOTICE.md)。

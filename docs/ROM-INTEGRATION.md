@@ -3,6 +3,15 @@
 此版本供小米 12S Ultra（thor、arm64）的 ROM 维护者集成。没有 ROM 名称、Android SDK 数值或驱动哈希白名单，也不依赖 Magisk、KernelSU、挂载元模块或模块安装脚本。
 不需要在手机上强行刷入 Root 模块来集成。移除这些集成门槛不代表相机二进制已兼容所有 Android ABI；具体 ROM 仍需编译和实拍验证。
 
+## 源码分支
+
+本集成方式在 `INTEGRATION` 分支维护；`main` 保留 Root 模块。
+
+```sh
+git clone --branch INTEGRATION --single-branch https://github.com/GSQ2004/thor-miuicamera.git
+cd thor-miuicamera
+```
+
 ## 使用
 
 在项目源码目录，用完整模块的解压目录导出（`module/` 空模板不能直接作为输入）：
