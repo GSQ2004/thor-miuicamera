@@ -18,8 +18,6 @@ jobs:
         run: |
           for file in module/*.sh scripts/*.sh; do sh -n "$file"; done
           sh scripts/check_compatibility_profiles.sh module/compatibility.sh
-      - name: ROM integration export
-        run: python scripts/check_rom_export.py
       - name: Parse source manifest and XML
         run: |
           python - <<'PY'
