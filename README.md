@@ -20,6 +20,13 @@
 > [!IMPORTANT]
 > **从旧版升级的缓存限制：**本机更新后需要手动刷新相机解析缓存和启动器相机图标缓存，安装包尚未自动处理。直接重启可能仍显示旧图标。请勿为刷新图标清空整个桌面数据，详见[实测记录](docs/VALIDATION.md)。
 
+## ROM 内置集成版（实验性预发布）
+
+[下载 ROM 集成包](https://github.com/GSQ2004/thor-miuicamera/releases/tag/rom-integration-20261114) · [集成说明](docs/ROM-INTEGRATION.md)
+
+供 `thor / arm64` 刷机包维护者使用：提供 `Android.bp`、`product.mk` 和 SELinux 配置，无 ROM 名称/SDK 白名单，无须 Root 或元模块。默认保留目标 ROM 的 HAL，已知 HAL 补丁须明确选择。
+**已通过导出完整性与自动化测试；尚未完成目标 ROM 编译、刷机或实拍验证。** 解除集成检查不会自动修复私有 ABI 或 campostproc `createSession` 故障。此包用于放进 ROM 源码，不能作为 Root 模块直接刷入。
+
 ## 兼容范围
 
 | Android | 已核对 ROM | 状态 |
