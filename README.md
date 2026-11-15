@@ -20,9 +20,18 @@
 > [!IMPORTANT]
 > **从旧版升级的缓存限制：**本机更新后需要手动刷新相机解析缓存和启动器相机图标缓存，安装包尚未自动处理。直接重启可能仍显示旧图标。请勿为刷新图标清空整个桌面数据，详见[实测记录](docs/VALIDATION.md)。
 
-## 分支用途
+## 两种使用方式，共用 main 主线
 
-本分支 `main` 维护 Magisk / KernelSU 相机模块。刷机包维护者请切换至 [INTEGRATION 分支](https://github.com/GSQ2004/thor-miuicamera/tree/INTEGRATION)，查看 ROM 内置集成源码与说明。
+相机补丁、模块打包和 ROM 集成导出器统一在 `main` 维护。同一版本的 Release 分别提供两类产物，各自记录测试状态。
+
+| 用途 | 下载与说明 | 当前状态 |
+| --- | --- | --- |
+| 普通用户安装 Root 模块 | [模块 ZIP 与校验文件](https://github.com/GSQ2004/thor-miuicamera/releases/tag/v0.1.7)，见下方安装步骤 | 0.1.7 已有实机验证，保留已核对驱动范围与缓存限制 |
+| ROM 维护者内置相机 | 同一 Release 中名称含 `ROM-INTEGRATION` 的 ZIP，配套 [集成说明](docs/ROM-INTEGRATION.md) | 实验性：导出/自动化检查通过，目标 ROM 编译及实机测试尚未进行 |
+
+ROM 集成提供 `Android.bp`、`product.mk`、权限和 SELinux 配置，不依赖 Root，不执行模块安装脚本的 ROM/SDK/驱动白名单检查。默认保留目标 ROM 的 HAL；维护者可明确选择已有补丁并验证私有 ABI。
+**ROM 集成 ZIP 用于放入源码，不能在 Root 管理器或 Recovery 中直接刷入。** 硬件目标仍为 `thor / arm64`。解除集成门槛不会自动修复 campostproc `createSession` 故障。
+现有文件名和历史 Release 保持可用；新版本文件名会明确区分模块和 ROM 集成产物。
 
 ## 兼容范围
 
